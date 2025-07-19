@@ -1,53 +1,83 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="h-full">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Document</title>
     <script src="https://unpkg.com/vue@3.5.17"></script>
-<style>
-    html,body{
-        height: 100%;
-    }
-    body{
-        display: grid;
-        place-items: center;
-    }
-    .text-red{
-        color: red;
-    }
-    .text-green{
-        color: green;
-    }
-
-</style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
+<div id="app" class="h-full gird place-items-center">
 
-<div id="app">
-    <p>
-<!--<button v-bind:class="active ? 'text-red' : 'text-green'" v-on:click="toggle">-->
-<button :class="active ? 'text-red' : 'text-green'" @click="toggle">
-    click me
-</button>
-    </p>
+    <section v-if="inProgress.length > 0">
+        <h2 class="font-bold mb-2">In Progress</h2>
+
+
+        <ul>
+            <li v-for="assignment in inProgress" :key="assignment.id">
+                <label>
+                    {{assignment.name}}
+                    <input type="checkbox" v-model="assignment.completed">
+                </label>
+            </li>
+        </ul>
+    </section>
+
+
+
+    <section v-if="completedAssignments.length > 0">
+        <h2 class="font-bold mb-2">Completed</h2>
+        <ul>
+            <li v-for="assignment in completedAssignments"
+                :key="assignment.id"
+            >
+                <label>
+                    {{assignment.name}}
+                    <input type="checkbox" v-model="assignment.completed">
+                </label>
+            </li>
+        </ul>
+    </section>
+<!--    <pre>-->
+<!--        {{AssignmentA}}-->
+<!--    </pre>-->
 </div>
 
+
+
 <script>
-    Vue.createApp({
+
+    let app = {
+
         data() {
             return {
-            buttonClasses: 'text-green',
-            active: false
+            AssignmentA: [
+                { name: 'Finish Project', completed: false,id: 1 },
+                { name: 'read ch 4', completed: false,id: 2 },
+                { name: 'turn in homework', completed: false,id: 3 },
+
+            ]
+
             };
         },
         methods: {
-            toggle() {
-                this.active = !this.active;
-            }
+
+        },
+
+        // computed property its sort of method that can be cached
+        computed:{
+        inProgress(){
+            return this.AssignmentA.filter(a => !a.completed);
+        },
+        completedAssignments(){
+            return this.AssignmentA.filter(a => a.completed);
         }
-    }).mount('#app');
+        }
+
+    };
+    Vue.createApp(app).mount('#app');
 </script>
 
 </body>
