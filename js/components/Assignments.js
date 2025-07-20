@@ -34,7 +34,7 @@ export default {
         <AssignmentList :assignments="filters.completed" title="مكتملة" />
     </div>
 
-    <AssignmentCreate :AssignmentA="AssignmentA"> </AssignmentCreate>
+    <AssignmentCreate @AddAssignmentEmitChild="addAssignment"> </AssignmentCreate>
     `,
 
 data() {
@@ -50,7 +50,13 @@ data() {
     };
 },
 methods: {
-
+    addAssignment(name){
+        this.AssignmentA.push({
+            name: name,
+            completed: false,
+            id: this.AssignmentA.length + 1
+        });
+    }
 
 },
 
