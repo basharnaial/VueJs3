@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3.5.17"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+<div id="app" class="h-full grid place-items-center">
+
+<!-- Create a custom Vue component and call it from parent using slot for dynamic button label -->
+
+
+<!--    call child component-->
+<component-app-button> Dyanmic Button Name</component-app-button>
+
+
+
+</div>
+
+<script type="module">
+    // import ComName From  '/Path/To/File'
+    import AppButton from './js/components/AppButton.js'
+
+    let app = {
+        components: {
+            'component-app-button': AppButton
+            }
+
+        };
+    
+    Vue.createApp(app).mount('#app');
+</script>
+
+</body>
+</html>
