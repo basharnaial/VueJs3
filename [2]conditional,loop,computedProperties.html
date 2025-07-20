@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3.5.17"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+<div id="app" class="h-full gird place-items-center">
+
+    <section v-if="inProgress.length > 0">
+        <h2 class="font-bold mb-2">In Progress</h2>
+
+
+        <ul>
+            <li v-for="assignment in inProgress" :key="assignment.id">
+                <label>
+                    {{assignment.name}}
+                    <input type="checkbox" v-model="assignment.completed">
+                </label>
+            </li>
+        </ul>
+    </section>
+
+
+
+    <section v-if="completedAssignments.length > 0">
+        <h2 class="font-bold mb-2">Completed</h2>
+        <ul>
+            <li v-for="assignment in completedAssignments"
+                :key="assignment.id"
+            >
+                <label>
+                    {{assignment.name}}
+                    <input type="checkbox" v-model="assignment.completed">
+                </label>
+            </li>
+        </ul>
+    </section>
+<!--    <pre>-->
+<!--        {{AssignmentA}}-->
+<!--    </pre>-->
+</div>
+
+
+
+<script>
+
+    let app = {
+
+        data() {
+            return {
+            AssignmentA: [
+                { name: 'Finish Project', completed: false,id: 1 },
+                { name: 'read ch 4', completed: false,id: 2 },
+                { name: 'turn in homework', completed: false,id: 3 },
+
+            ]
+
+            };
+        },
+        methods: {
+
+        },
+
+        // computed property its sort of method that can be cached
+        computed:{
+        inProgress(){
+            return this.AssignmentA.filter(a => !a.completed);
+        },
+        completedAssignments(){
+            return this.AssignmentA.filter(a => a.completed);
+        }
+        }
+
+    };
+    Vue.createApp(app).mount('#app');
+</script>
+
+</body>
+</html>
