@@ -1,8 +1,10 @@
 // Level 1
 import AssignmentList from './AssignmentList.js'
+import AssignmentCreate from './AssignmentCreate.js'
 export default {
     components: {
         AssignmentList,
+        AssignmentCreate
     },
     template: `
     <!-- Stats Section: إحصائيات المهام -->
@@ -32,14 +34,7 @@ export default {
         <AssignmentList :assignments="filters.completed" title="مكتملة" />
     </div>
 
-    <!-- Add Assignment Form -->
-
-    <form @submit.prevent="addAssignment"  class="bg-white rounded-lg shadow-md p-4" >
-    <div class=" mt-2">
-  <input v-model="newAssignment" type="text"  placeholder="إضافة مهمة جديدة">
-        <button type="submit">إضافة</button>
-      </div> 
-    </form>
+    <AssignmentCreate :AssignmentA="AssignmentA"> </AssignmentCreate>
     `,
 
 data() {
@@ -50,19 +45,13 @@ data() {
         { name: 'تسليم الواجب', completed: false,id: 3 },
 
     ],
-    newAssignment: ''
+
 
     };
 },
 methods: {
-    addAssignment(){
-        this.AssignmentA.push({
-            name: this.newAssignment,
-            completed: false,
-            id: this.AssignmentA.length + 1
-        });
-        this.newAssignment = '';
-    }
+
+
 },
 
 // computed property its sort of method that can be cached
