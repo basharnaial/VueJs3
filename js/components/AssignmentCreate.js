@@ -1,7 +1,7 @@
 export default {
     template: `
 
-    <form @submit.prevent="addAssignment"  class="bg-white rounded-lg shadow-md p-4" >
+    <form @submit.prevent="addAssignment"  class="bg-white rounded-lg shadow-md p-4 mt-2 text-black" >
     <div class=" mt-2">
   <input v-model="newAssignment" type="text"  placeholder="إضافة مهمة جديدة">
         <button type="submit">إضافة</button>

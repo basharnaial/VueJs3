@@ -1,20 +1,23 @@
 // Level 2 
 import SingleAssignment from './Assignment.js'
 import AssignmentTags from './AssignmentTags.js'
+import Panel from "./Panel.js";
+
 export default {
     components: {
         SingleAssignment,
-        AssignmentTags
+        AssignmentTags,
+        Panel
     },
     template: /*html*/`
 
     
     <!-- Kanban Column: عمود كانبان -->
     
-    <section v-if="assignments.length > 0" class="bg-white rounded-lg shadow-md h-96 flex flex-col">
+    <Panel v-if="assignments.length > 0" class="bg-white rounded-lg shadow-md h-96 flex flex-col">
         <!-- Column Header: رأس العمود -->
 
-    <div class="flex items-center p-4 border-b border-gray-200 justify-between items-start">
+      <div class="flex items-center p-4 border-b border-gray-200 justify-between items-start">
 
             <div class="w-8 h-8 rounded-full flex items-center justify-center mr-3"
                  :class="title === 'قيد التنفيذ' ? 'bg-red-100 text-red-600' : 'bg-green-100 text-green-600'">
@@ -56,7 +59,11 @@ export default {
         </div>
 
         <slot></slot>
-    </section>
+
+        <template #footer>
+          my footer is here
+        </template>
+    </Panel>
     `,
     props: {
         assignments: Array,
