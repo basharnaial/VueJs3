@@ -40,15 +40,30 @@ export default {
 data() {
     return {
     AssignmentA: [
-        { name: 'إنهاء المشروع', completed: false,id: 1, tag: 'math' },
-        { name: 'قراءة الفصل الرابع', completed: false,id: 2, tag: 'sciense' },
-        { name: 'تسليم الواجب', completed: false,id: 3, tag: 'math' },
+  
 
     ],
 
 
     };
 },
+
+
+// we have axios library or fetch which is native ,  promise its like a man owes you money and you are waiting for him to pay you , its just promise one second, day or month 
+created(){
+  fetch('http://localhost:3001/assignments')
+  .then(response => response.json())
+  .then(assignments => {
+    // console.log(data);
+    this.AssignmentA = assignments;
+  });
+},
+// mounted() {
+//     console.log('Component mounted on the page!');
+//   },
+//   updated() {
+//     console.log('Component updated after data change!');
+//   },
 methods: {
     addAssignment(name){
         this.AssignmentA.push({
