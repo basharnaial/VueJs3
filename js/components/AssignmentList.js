@@ -6,7 +6,7 @@ export default {
         SingleAssignment,
         AssignmentTags
     },
-    template: `
+    template: /*html*/`
 
     
     <!-- Task List Section: قسم قائمة المهام -->
@@ -26,10 +26,9 @@ export default {
             </span>
         </div>
 
-        <!-- recive the emmited tag from the child component line 32 -->
-        <AssignmentTags :inital-tags="assignments.map(a => a.tag)"
-        :current-tag="currentTag"
-        @change="currentTag = $event"
+        <AssignmentTags 
+        :inital-tags="assignments.map(a => a.tag)"
+        v-model:currentTag="currentTag"
         />
 
         <!-- Tasks List -->

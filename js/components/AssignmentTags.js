@@ -4,7 +4,7 @@ export default {
 
         <!-- emit the tag to the parent component line 7 -->
         <button v-for="tag in tags"
-        @click="$emit('change', tag)"
+        @click="$emit('update:currentTag', tag)"
         class="bg-gray-100 text-gray-600 px-2 py-1 rounded-full text-xs mt-6 mb-5"
             :class="{
                 'bg-green-100 text-green-600 border-green-600': currentTag === tag,
