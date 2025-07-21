@@ -25,7 +25,7 @@ export default {
         </div>
 
         <div class="flex gap-2">
-        
+        <!-- Tags -->
         <button v-for="tag in tags"
         @click="currentTag = tag"
         class="bg-gray-100 text-gray-600 px-2 py-1 rounded-full text-xs mt-6 mb-5"
