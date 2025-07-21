@@ -40,9 +40,9 @@ export default {
 data() {
     return {
     AssignmentA: [
-        { name: 'إنهاء المشروع', completed: false,id: 1 },
-        { name: 'قراءة الفصل الرابع', completed: false,id: 2 },
-        { name: 'تسليم الواجب', completed: false,id: 3 },
+        { name: 'إنهاء المشروع', completed: false,id: 1, tag: 'math' },
+        { name: 'قراءة الفصل الرابع', completed: false,id: 2, tag: 'sciense' },
+        { name: 'تسليم الواجب', completed: false,id: 3, tag: 'math' },
 
     ],
 
