@@ -31,6 +31,10 @@ export default {
             </span>
 
             <button v-show="canToggle" @click="$emit('toggle')"> &times; </button>
+
+
+            <button @click="$emit('clicked')">اضغطني</button>
+
         </div>
 
         <!-- Tags Filter -->

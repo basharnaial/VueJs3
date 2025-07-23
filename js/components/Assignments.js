@@ -30,7 +30,7 @@ export default {
 
     <!-- Kanban Board: لوحة كانبان -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-        <AssignmentList :assignments="filters.inProgress" title="قيد التنفيذ"> 
+        <AssignmentList @clicked="handleClick"  :assignments="filters.inProgress" title="قيد التنفيذ"> 
         
         <!-- Create component or any data of slot -->
          <AssignmentCreate @AddAssignmentEmitChild="addAssignment"> </AssignmentCreate>
@@ -82,7 +82,10 @@ export default {
                 completed: false,
                 id: this.AssignmentA.length + 1
             });
-        }
+        },
+        handleClick() {
+            alert('الزر في الابن تم الضغط عليه');
+          }
 
     },
 
